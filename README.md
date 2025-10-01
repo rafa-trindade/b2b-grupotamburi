@@ -1,19 +1,21 @@
-# Dashboard Elisa Agro
+# Descrição
 
-Um dashboard interativo desenvolvido com Streamlit para monitoramento e controle das refeições fornecidas às fazendas da Elisa Agro.
+Dashboard | App desenvolvido para que o cliente contratante acompanhe quantidades de refeições fornecidas, documentos e relatórios. Versão com dados fictícios para portfólio público. 
 
 ## 📋 Sobre o Projeto
 
-Este dashboard foi desenvolvido para permitir que o cliente acompanhem a quantidade de refeições fornecidas para cada fazenda da empresa. A ferramenta oferece uma visualização clara e interativa dos dados de fornecimento de refeições, facilitando o controle e a gestão do serviço.
+Este dashboard | App foi desenvolvido para permitir que o cliente acompanhem a quantidade de refeições fornecidas para cada unidade da empresa. A ferramenta oferece, além de acesso a relatórios e documentos, uma visualização clara e interativa dos dados de fornecimento de refeições, facilitando o controle e a gestão do serviço. 
 
 ## 📊 Funcionalidades
 
 - Acompanhamento em tempo real das refeições fornecidas
-- Visualização detalhada por fazenda
-- Histórico de fornecimento de refeições
+- Visualização detalhada por unidade
+- Histórico de fornecimento de refeições (com código de acesso)
 - Gráficos e relatórios interativos
 - Filtros por período e unidade
 - Download de relatório (fechamentos) no formato PDF
+- Acesso a documentos como NFE's (com código de acesso)
+
 
 ## 📸 Capturas de Tela
 
