@@ -1,4 +1,6 @@
-Dashboard | App desenvolvido para que o cliente contratante acompanhe quantidades de refeições fornecidas, documentos e relatórios. Versão com dados fictícios para portfólio público. 
+Dashboard | App desenvolvido para que o cliente contratante acompanhe quantidades de refeições fornecidas, documentos e relatórios. Versão com dados fictícios para portfólio público. [[Acessar]](https://grupotamburi.streamlit.app/)
+
+
 
 ## 📋 Sobre o Projeto
 
