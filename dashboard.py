@@ -927,16 +927,13 @@ with tab3:
     if not arquivos:
         st.warning("Nenhum arquivo DOC encontrado na pasta.")
     else:
-        # Lista apenas nomes
         nomes = [f["name"] for f in arquivos]
 
-        # Extrair ano e mês do padrão AAAAMM-SEQ
         anos_meses = sorted(
             {(n[:4], n[4:6]) for n in nomes if len(n) >= 6},
             key=lambda x: (x[0], x[1])
         )
 
-        # Pegar último ano/mês disponível
         ultimo_ano, ultimo_mes = anos_meses[-1]
 
 
@@ -955,7 +952,6 @@ with tab3:
 
         with col_mes:
             meses_disp = sorted({m for a, m in anos_meses if a == ano_sel})
-            # Converter meses para extenso
             meses_labels = [util.mapa_meses[int(m)] for m in meses_disp]
             mes_idx_default = meses_disp.index(ultimo_mes) if ano_sel == ultimo_ano else 0
 
@@ -966,10 +962,8 @@ with tab3:
                 key="mes_docs"
             )
 
-            # Converter de volta para número (com zero à esquerda)
             mes_sel = f"{list(util.mapa_meses.keys())[list(util.mapa_meses.values()).index(mes_sel_label)]:02d}"
 
-        # Filtrar documentos pelo ano/mês selecionado
         nomes_filtrados = [
             n for n in nomes if n.startswith(f"{ano_sel}{mes_sel}")
         ]
@@ -981,7 +975,6 @@ with tab3:
                 key="drop_docs"
             )
 
-        # Botão de exportar PDF
         with col_convert:
             st.markdown("<div style='margin-top: 27.8px;'>", unsafe_allow_html=True)
             if st.button("⬇️ Exportar como PDF", key="export_pdf_tab3", use_container_width=True):
@@ -992,7 +985,6 @@ with tab3:
                 download_data = fh.getvalue()
             st.markdown("</div>", unsafe_allow_html=True)
 
-        # Botão de download PDF
         with col_download:
             st.markdown("<div style='margin-top: 27.8px;'>", unsafe_allow_html=True)
             if "download_data" in locals() and download_data and nome_pdf:
@@ -1006,7 +998,6 @@ with tab3:
                 )
             st.markdown("</div>", unsafe_allow_html=True)
 
-        # Exibir Google Doc original
         idx = nomes.index(escolha)
         file_id = arquivos[idx]["id"]
         doc_url = f"https://docs.google.com/document/d/{file_id}/preview"

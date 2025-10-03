@@ -59,12 +59,10 @@ def exportar_pdf(file_id, nome_arquivo):
 
     fh.seek(0)
 
-    # salvar DOCX temporário
     with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as tmp_docx:
         tmp_docx.write(fh.read())
         tmp_docx_path = tmp_docx.name
 
-    # converter para PDF com LibreOffice
     output_dir = tempfile.mkdtemp()
     subprocess.run([
         "soffice", "--headless", "--convert-to", "pdf",
@@ -73,13 +71,11 @@ def exportar_pdf(file_id, nome_arquivo):
 
     pdf_path = os.path.join(output_dir, os.path.basename(tmp_docx_path).replace(".docx", ".pdf"))
 
-    # ler PDF em memória
     with open(pdf_path, "rb") as f:
         pdf_bytes = io.BytesIO(f.read())
 
     nome_pdf = nome_arquivo if nome_arquivo.lower().endswith(".pdf") else nome_arquivo + ".pdf"
 
-    # limpar temporários
     os.remove(tmp_docx_path)
     os.remove(pdf_path)
 
