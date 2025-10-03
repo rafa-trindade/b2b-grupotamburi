@@ -1,10 +1,8 @@
-Dashboard | App desenvolvido para que o cliente contratante acompanhe quantidades de refeições fornecidas, documentos e relatórios. Versão com dados fictícios para portfólio público. [[Acessar]](https://mh-grupotamburi.streamlit.app/) 
+# Controle B2B | MH Refeições
+[![Projeto Badge](https://img.shields.io/badge/-Projeto-2B5482?style=flat-square&logo=github&logoColor=fff)](https://github.com/rafa-trindade/b2b-grupotamburi)
+[![Live Badge](https://img.shields.io/badge/-Live-2B5482?style=flat-square&logo=streamlit&logoColor=fff)](https://mh-grupotamburi.streamlit.app/)
 
-
-
-## 📋 Sobre o Projeto
-
-Este dashboard | App foi desenvolvido para permitir que o cliente acompanhem a quantidade de refeições fornecidas para cada unidade da empresa. A ferramenta oferece, além de acesso a relatórios e documentos, uma visualização clara e interativa dos dados de fornecimento de refeições, facilitando o controle e a gestão do serviço. 
+Dashboard | App desenvolvido para que o cliente contratante acompanhe quantidades de refeições fornecidas, documentos e relatórios. Versão com dados fictícios para portfólio público.
 
 ## 📊 Funcionalidades
 
