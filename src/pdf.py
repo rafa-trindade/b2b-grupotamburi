@@ -1,6 +1,8 @@
 import os
 import io
 import json
+import tempfile
+import subprocess
 from datetime import datetime
 import streamlit as st
 from googleapiclient.discovery import build
@@ -38,9 +40,16 @@ def listar_arquivos_docs():
 
 
 def exportar_pdf(file_id, nome_arquivo):
-    """Exporta um Google Docs como PDF e retorna BytesIO + nome do arquivo final (.pdf)."""
+    """
+    Exporta um Google Docs como DOCX e converte para PDF via LibreOffice headless.
+    Retorna BytesIO + nome do arquivo final (.pdf).
+    """
     service = carregar_servico()
-    request = service.files().export_media(fileId=file_id, mimeType="application/pdf")
+    request = service.files().export_media(
+        fileId=file_id,
+        mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+
     fh = io.BytesIO()
     downloader = MediaIoBaseDownload(fh, request)
 
@@ -49,5 +58,29 @@ def exportar_pdf(file_id, nome_arquivo):
         _, done = downloader.next_chunk()
 
     fh.seek(0)
+
+    # salvar DOCX temporário
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as tmp_docx:
+        tmp_docx.write(fh.read())
+        tmp_docx_path = tmp_docx.name
+
+    # converter para PDF com LibreOffice
+    output_dir = tempfile.mkdtemp()
+    subprocess.run([
+        "soffice", "--headless", "--convert-to", "pdf",
+        "--outdir", output_dir, tmp_docx_path
+    ], check=True)
+
+    pdf_path = os.path.join(output_dir, os.path.basename(tmp_docx_path).replace(".docx", ".pdf"))
+
+    # ler PDF em memória
+    with open(pdf_path, "rb") as f:
+        pdf_bytes = io.BytesIO(f.read())
+
     nome_pdf = nome_arquivo if nome_arquivo.lower().endswith(".pdf") else nome_arquivo + ".pdf"
-    return fh, nome_pdf
+
+    # limpar temporários
+    os.remove(tmp_docx_path)
+    os.remove(pdf_path)
+
+    return pdf_bytes, nome_pdf
