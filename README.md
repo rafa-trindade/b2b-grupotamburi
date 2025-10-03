@@ -1,4 +1,4 @@
-# Controle B2B | MH Refeições
+# Controle B2B | Grupo Tamburi
 [![Projeto Badge](https://img.shields.io/badge/-Projeto-2B5482?style=flat-square&logo=github&logoColor=fff)](https://github.com/rafa-trindade/b2b-grupotamburi)
 [![Live Badge](https://img.shields.io/badge/-Live-2B5482?style=flat-square&logo=streamlit&logoColor=fff)](https://mh-grupotamburi.streamlit.app/)
 
